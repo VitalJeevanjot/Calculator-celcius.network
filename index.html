@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/app.css">
+    <title>Hello, world!</title>
+</head>
+
+<body>
+    <div class="p-2 bd-highlight">
+        <div class="card container inside-container" style="width: 650px;">
+            <div class="row align-self-center">
+                <div class="pt-4 pb-1 pl-2 h5">Select your collateral type</div>
+            </div>
+            <!-- Button group of 6 currencies in Desktop view -->
+            <div class="btn-group btn-group-toggle row align-self-center currency-btns" data-toggle="buttons">
+                <label class="btn btn-outline-success active m-2 rounded border-dark text-dark text-left">
+                    <img src="assets/btc.png" class="avatar" alt="btc-logo">
+                    <input type="radio" name="options" id="btc-inp" checked onfocus="this.blur();">
+                    BTC
+                </label>
+                <label class="btn btn-outline-success m-2 rounded border-dark text-dark text-left">
+                    <img src="assets/eth.png" class="avatar" alt="eth-logo">
+                    <input type="radio" name="options" id="eth-inp" onfocus="this.blur();"> ETH
+                </label>
+                <label class="btn btn-outline-success m-2 rounded border-dark text-dark text-left">
+                    <img src="assets/bch.png" class="avatar" alt="bch-logo">
+                    <input type="radio" name="options" id="bch-inp" onfocus="this.blur();"> BCH
+                </label>
+                <label class="btn btn-outline-success m-2 rounded border-dark text-dark text-left">
+                    <img src="assets/xrp.png" class="avatar" alt="xrp-logo">
+                    <input type="radio" name="options" id="xrp-inp" checked onfocus="this.blur();">
+                    XRP
+                </label>
+                <label class="btn btn-outline-success m-2 rounded border-dark text-dark text-left">
+                    <img src="assets/ltc.png" class="avatar" alt="ltc-logo">
+                    <input type="radio" name="options" id="ltc-inp" onfocus="this.blur();"> LTC
+                </label>
+                <label class="btn btn-outline-success m-2 rounded border-dark text-dark text-left">
+                    <img src="assets/dash.png" class="avatar" alt="dash-logo">
+                    <input type="radio" name="options" id="dash-inp" onfocus="this.blur();">DASH
+                </label>
+            </div>
+            <div class="row inside-container align-self-center pt-4">
+                <div class="col h5">
+                    <label for="loan-amount">Loan Amount</label>
+                    <input type="email" class="form-control" id="loan-amount" placeholder="$10,000">
+                    <small id="emailHelp" class="form-text">Minimum loan amount $1,500</small>
+                </div>
+                <div class="col h5">
+                    <label for="collateral-amount">Collateral Amount</label>
+                    <input type="email" class="form-control" id="collateral-amount" placeholder="1.000098">
+                </div>
+            </div>
+            <div class="row inside-container align-self-center">
+                <div class="pt-4 pb-1 pl-3 h5">LTV (Loan to Value)</div>
+            </div>
+            <div class="btn-group btn-group-toggle row align-self-center inside-container collateral-ltv-btns"
+                data-toggle="buttons">
+                <label class="btn btn-outline-success active m-2 rounded border-dark text-dark">
+                    <input type="radio" name="ltv-options" id="ltv-inp-0" checked onfocus="this.blur();">
+                    <span class="mb-0 blockquote">25%</span>
+                </label>
+                <label class="btn btn-outline-success m-2 rounded border-dark text-dark">
+                    <input type="radio" name="ltv-options" id="ltv-inp-1" onfocus="this.blur();">
+                    <span class="mb-0 blockquote">33%</span>
+                </label>
+                <label class="btn btn-outline-success m-2 rounded border-dark text-dark">
+                    <input type="radio" name="ltv-options" id="ltv-inp-2" onfocus="this.blur();">
+                    <span class="mb-0 blockquote">50%</span>
+                </label>
+            </div>
+            <div class="row inside-container align-self-center">
+                <div class="pt-4 pb-1 pl-3 h5">Long Term</div>
+            </div>
+            <div class="btn-group btn-group-toggle row align-self-center inside-container lt-btns"
+                data-toggle="buttons">
+                <label class="btn btn-outline-success active m-2 rounded border-dark text-dark">
+                    <input type="radio" name="ltv-options" id="lt-inp-0" checked onfocus="this.blur();">
+                    6 Months
+                </label>
+                <label class="btn btn-outline-success m-2 rounded border-dark text-dark">
+                    <input type="radio" name="ltv-options" id="lt-inp-1" checked onfocus="this.blur();">
+                    1 Year
+                </label>
+                <label class="btn btn-outline-success m-2 rounded border-dark text-dark">
+                    <input type="radio" name="ltv-options" id="lt-inp-2" onfocus="this.blur();">
+                    2 Years
+                </label>
+                <label class="btn btn-outline-success m-2 rounded border-dark text-dark">
+                    <input type="radio" name="ltv-options" id="lt-inp-3" onfocus="this.blur();" class="blockquote">
+                    3 Years
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

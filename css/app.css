@@ -1,0 +1,61 @@
+/* .btn:focus {
+    outline: none;
+} */
+/* .btn:hover, .btn:focus {
+    background-color: rgba(224, 224, 224, 0.055) !important;
+    color: black;
+} */
+/* .btn:active {
+    color: rgba(107, 107, 107, 0.753) !important;
+} */
+.btn {
+    cursor: pointer;
+}
+.btn:active {
+    color: white !important;
+}
+.btn.active {
+    color: white !important;
+    background: rgb(30, 179, 125) !important;
+}
+.btn:hover {
+    color: white !important;
+    background: rgb(30, 179, 125) !important;
+}
+.avatar {
+    vertical-align: middle;
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+.rounded {
+    border-width: 1px !important; 
+    border-color: rgba(172, 172, 172, 0.521) !important;
+}
+.inside-container div {
+    width: 550px;
+}
+div.h5 {
+    color: rgb(50, 50, 93);
+}
+.form-control:focus {
+    box-shadow: 0 0 0 0;
+    outline: 0 none;
+}
+.currency-btns label {
+    width: 150px;
+}
+.collateral-ltv-btns label {
+    width: 150px;
+    height: 45px;
+}
+.lt-btns label {
+    width: 100px;
+}
+
+/* .btn:active
+{
+    font-size: 13px;
+    color:orange;
+} */
