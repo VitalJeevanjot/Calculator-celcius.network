@@ -8,13 +8,10 @@
 /* .btn:active {
     color: rgba(107, 107, 107, 0.753) !important;
 } */
-.btn {
+.btn-outline {
     cursor: pointer;
 }
-.btn:active {
-    color: white !important;
-}
-.btn.active {
+.btn-outline.active {
     color: white !important;
     background: rgb(30, 179, 125) !important;
 }
@@ -52,6 +49,14 @@ div.h5 {
 }
 .lt-btns label {
     width: 100px;
+}
+.subcard-1 {
+    background: rgb(30, 179, 125);
+    width: 255px !important;
+}
+.subcard-2 {
+    background: rgb(247, 247, 250);
+    width: 235px !important;
 }
 
 /* .btn:active
