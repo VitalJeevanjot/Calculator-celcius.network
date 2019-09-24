@@ -17,143 +17,143 @@
 
 <body>
     <div class="p-2 bd-highlight">
-        <div class="card container inside-container align-self-center" style="width: 650px;">
-            <div class="row align-self-center">
-                <div class="pt-4 pb-1 pl-2 h5">Select your collateral type</div>
-            </div>
-            <!-- Button group of 6 currencies in Desktop view -->
-            <div class="btn-group btn-group-toggle row align-self-center currency-btns" data-toggle="buttons">
-                <label class="btn btn-outline active m-2 rounded border-dark text-dark text-left">
-                    <img src="assets/btc.png" class="avatar" alt="btc-logo">
-                    <input type="radio" name="options" id="btc-inp" checked onfocus="this.blur();">
-                    BTC
-                </label>
-                <label class="btn btn-outline m-2 rounded border-dark text-dark text-left">
-                    <img src="assets/eth.png" class="avatar" alt="eth-logo">
-                    <input type="radio" name="options" id="eth-inp" onfocus="this.blur();"> ETH
-                </label>
-                <label class="btn btn-outline m-2 rounded border-dark text-dark text-left">
-                    <img src="assets/bch.png" class="avatar" alt="bch-logo">
-                    <input type="radio" name="options" id="bch-inp" onfocus="this.blur();"> BCH
-                </label>
-                <label class="btn btn-outline m-2 rounded border-dark text-dark text-left">
-                    <img src="assets/xrp.png" class="avatar" alt="xrp-logo">
-                    <input type="radio" name="options" id="xrp-inp" checked onfocus="this.blur();">
-                    XRP
-                </label>
-                <label class="btn btn-outline m-2 rounded border-dark text-dark text-left">
-                    <img src="assets/ltc.png" class="avatar" alt="ltc-logo">
-                    <input type="radio" name="options" id="ltc-inp" onfocus="this.blur();"> LTC
-                </label>
-                <label class="btn btn-outline m-2 rounded border-dark text-dark text-left">
-                    <img src="assets/dash.png" class="avatar" alt="dash-logo">
-                    <input type="radio" name="options" id="dash-inp" onfocus="this.blur();">DASH
-                </label>
-            </div>
-            <!-- Row: Inputs of Loan Amount and Collateral Amount -->
-            <div class="row inside-container align-self-center pt-4">
-                <div class="col h5">
-                    <label for="loan-amount">Loan Amount</label>
-                    <input type="email" class="form-control" id="loan-amount" placeholder="$10,000">
-                    <small id="emailHelp" class="form-text">Minimum loan amount $1,500</small>
+        <div class="card container max-auto" style="max-width: 40rem;">
+            <div class="card-body">
+                <div class="row">
+                    <div class="pt-4 pl-3 h5">Select your collateral type</div>
                 </div>
-                <div class="col h5">
-                    <label for="collateral-amount">Collateral Amount</label>
-                    <input type="email" class="form-control" id="collateral-amount" placeholder="1.000098">
+                <!-- Button group of 6 currencies in Desktop view -->
+                <div class="btn-group btn-group-toggle row currency-btns" data-toggle="buttons">
+                    <label class="btn btn-outline active m-2 rounded border-dark text-dark text-left" id="f_btn">
+                        <img src="assets/btc.png" class="avatar" alt="btc-logo">
+                        <input type="radio" name="options" id="btc-inp" checked onfocus="this.blur();">
+                        BTC
+                    </label>
+                    <label class="btn btn-outline m-2 rounded border-dark text-dark text-left">
+                        <img src="assets/eth.png" class="avatar" alt="eth-logo">
+                        <input type="radio" name="options" id="eth-inp" onfocus="this.blur();"> ETH
+                    </label>
+                    <label class="btn btn-outline m-2 rounded border-dark text-dark text-left">
+                        <img src="assets/bch.png" class="avatar" alt="bch-logo">
+                        <input type="radio" name="options" id="bch-inp" onfocus="this.blur();"> BCH
+                    </label>
+                    <label class="btn btn-outline m-2 rounded border-dark text-dark text-left">
+                        <img src="assets/xrp.png" class="avatar" alt="xrp-logo">
+                        <input type="radio" name="options" id="xrp-inp" checked onfocus="this.blur();">
+                        XRP
+                    </label>
+                    <label class="btn btn-outline m-2 rounded border-dark text-dark text-left">
+                        <img src="assets/ltc.png" class="avatar" alt="ltc-logo">
+                        <input type="radio" name="options" id="ltc-inp" onfocus="this.blur();"> LTC
+                    </label>
+                    <label class="btn btn-outline m-2 rounded border-dark text-dark text-left">
+                        <img src="assets/dash.png" class="avatar" alt="dash-logo">
+                        <input type="radio" name="options" id="dash-inp" onfocus="this.blur();">DASH
+                    </label>
                 </div>
-            </div>
-            <div class="row inside-container align-self-center">
-                <div class="pt-4 pb-1 pl-3 h5">LTV (Loan to Value)</div>
-            </div>
-            <!-- Row: Select Loan To Value -->
-            <div class="btn-group btn-group-toggle row align-self-center inside-container collateral-ltv-btns"
-                data-toggle="buttons">
-                <label class="btn btn-outline active m-2 rounded border-dark text-dark">
-                    <input type="radio" name="ltv-options" id="ltv-inp-0" checked onfocus="this.blur();">
-                    <span class="mb-0 blockquote">25%</span>
-                </label>
-                <label class="btn btn-outline m-2 rounded border-dark text-dark">
-                    <input type="radio" name="ltv-options" id="ltv-inp-1" onfocus="this.blur();">
-                    <span class="mb-0 blockquote">33%</span>
-                </label>
-                <label class="btn btn-outline m-2 rounded border-dark text-dark">
-                    <input type="radio" name="ltv-options" id="ltv-inp-2" onfocus="this.blur();">
-                    <span class="mb-0 blockquote">50%</span>
-                </label>
-            </div>
-            <!-- Row: Select Long Term Plan -->
-            <div class="row inside-container align-self-center">
-                <div class="pt-4 pb-1 pl-3 h5">Long Term</div>
-            </div>
-            <div class="btn-group btn-group-toggle row align-self-center inside-container lt-btns"
-                data-toggle="buttons">
-                <label class="btn btn-outline active m-2 rounded border-dark text-dark">
-                    <input type="radio" name="ltv-options" id="lt-inp-0" checked onfocus="this.blur();">
-                    6 Months
-                </label>
-                <label class="btn btn-outline m-2 rounded border-dark text-dark">
-                    <input type="radio" name="ltv-options" id="lt-inp-1" checked onfocus="this.blur();">
-                    1 Year
-                </label>
-                <label class="btn btn-outline m-2 rounded border-dark text-dark">
-                    <input type="radio" name="ltv-options" id="lt-inp-2" onfocus="this.blur();">
-                    2 Years
-                </label>
-                <label class="btn btn-outline m-2 rounded border-dark text-dark">
-                    <input type="radio" name="ltv-options" id="lt-inp-3" onfocus="this.blur();" class="blockquote">
-                    3 Years
-                </label>
-            </div>
-            <!-- Row: Interest Rates Title -->
-            <div class="row h5 inside-container align-self-center pt-4 pl-3">
-                <p>Interest Rates</p>
-            </div>
-            <!-- Row: Interest Rates (Two cards in single row) -->
-            <div class="row inside-container align-self-center">
-                <div class="col h5">
-                    <div class="card text-white shadow-lg subcard-1 mb-3 pr-0 mr-0">
-                        <div class="card-body" style="width: 255px;">
-                            <button type="button" class="btn bg-white text-dark rounded-pill active">
-                                Pay interest with CEL
-                                <i class="fas fa-question-circle"></i>
-                            </button>
-                            <!-- Sub-Row: Columns to print values -->
-                            <div class="row pt-4" style="width: 250px;">
-                                <div class="col-sm">
-                                    <h5>4%</h5>
-                                    <p><small>APR%</small></p>
-                                </div>
-                                <div class="col-sm">
-                                    <h5>$10</h5>
-                                    <p><small>Month</small></p>
-                                </div>
-                                <div class="col-sm">
-                                    <h5>$300</h5>
-                                    <p><small>Total</small></p>
+                <!-- Row: Inputs of Loan Amount and Collateral Amount -->
+                <div class="row">
+                    <div class="col-lg h5 pt-4">
+                        <label for="loan-amount">Loan Amount</label>
+                        <input type="text" class="form-control" id="loan-amount" placeholder="$10,000">
+                        <small class="form-text text-dark">Minimum loan amount $1,500</small>
+                    </div>
+                    <div class="col-lg h5 pt-4">
+                        <label for="collateral-amount">Collateral Amount</label>
+                        <input type="text" class="form-control" id="collateral-amount" placeholder="1.000098">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="pt-4 pb-1 pl-3 h5">LTV (Loan to Value)</div>
+                </div>
+                <!-- Row: Select Loan To Value -->
+                <div class="btn-group btn-group-toggle row collateral-ltv-btns" data-toggle="buttons">
+                    <label class="btn btn-outline active m-2 rounded border-dark text-dark">
+                        <input type="radio" name="ltv-options" id="ltv-inp-0" checked onfocus="this.blur();">
+                        <span class="mb-0 blockquote">25%</span>
+                    </label>
+                    <label class="btn btn-outline m-2 rounded border-dark text-dark">
+                        <input type="radio" name="ltv-options" id="ltv-inp-1" onfocus="this.blur();">
+                        <span class="mb-0 blockquote">33%</span>
+                    </label>
+                    <label class="btn btn-outline m-2 rounded border-dark text-dark">
+                        <input type="radio" name="ltv-options" id="ltv-inp-2" onfocus="this.blur();">
+                        <span class="mb-0 blockquote">50%</span>
+                    </label>
+                </div>
+                <!-- Row: Select Long Term Plan -->
+                <div class="row">
+                    <div class="pt-4 pb-1 pl-3 h5">Long Term</div>
+                </div>
+                <div class="btn-group btn-group-toggle row lt-btns" data-toggle="buttons">
+                    <label class="btn btn-outline active m-2 rounded border-dark text-dark">
+                        <input type="radio" name="ltv-options" id="lt-inp-0" checked onfocus="this.blur();">
+                        6 Months
+                    </label>
+                    <label class="btn btn-outline m-2 rounded border-dark text-dark">
+                        <input type="radio" name="ltv-options" id="lt-inp-1" checked onfocus="this.blur();">
+                        1 Year
+                    </label>
+                    <label class="btn btn-outline m-2 rounded border-dark text-dark">
+                        <input type="radio" name="ltv-options" id="lt-inp-2" onfocus="this.blur();">
+                        2 Years
+                    </label>
+                    <label class="btn btn-outline m-2 rounded border-dark text-dark">
+                        <input type="radio" name="ltv-options" id="lt-inp-3" onfocus="this.blur();" class="blockquote">
+                        3 Years
+                    </label>
+                </div>
+                <!-- Row: Interest Rates Title -->
+                <div class="row h5 pt-4 pl-3">
+                    <p>Interest Rates</p>
+                </div>
+                <!-- Row: Interest Rates (Two cards in single row) -->
+                <div class="row no-gutters">
+                    <div class="col-lg p-1">
+                        <div class="card mx-auto text-white shadow-lg subcard-1 mb-3 pr-0 mr-0">
+                            <div class="card-body mx-auto p-3">
+                                <button type="button" class="btn bg-white text-dark rounded-pill" onfocus="this.blur();">
+                                    Pay interest with CEL
+                                    <i class="fas fa-question-circle"></i>
+                                </button>
+                                <!-- Sub-Row: Columns to print values -->
+                                <div class="row pt-4 text-center no-gutters">
+                                    <div class="col-sm-3">
+                                        <h5>4%</h5>
+                                        <p><small>APR%</small></p>
+                                    </div>
+                                    <div class="col-sm-5">
+                                        <h5>$10</h5>
+                                        <p><small>Per Month</small></p>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <h5>$300</h5>
+                                        <p><small>Total</small></p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col h5 interest-rates-cards">
-                    <div class="card text-white subcard-2 text-dark mb-3 pl-0 ml-0">
-                        <div class="card-body" style="width: 235px;">
-                            <button type="button" class="btn bg-white text-dark rounded-pill active">
-                                Pay interest with Fiat
-                            </button>
-                            <!-- Sub-Row: Columns to print values -->
-                            <div class="row pt-4" style="width: 230px;">
-                                <div class="col-sm">
-                                    <h5>4%</h5>
-                                    <p><small>APR%</small></p>
-                                </div>
-                                <div class="col-sm">
-                                    <h5>$10</h5>
-                                    <p><small>Month</small></p>
-                                </div>
-                                <div class="col-sm">
-                                    <h5>$300</h5>
-                                    <p><small>Total</small></p>
+                    <div class="col-lg p-1">
+                        <div class="card mx-auto text-white subcard-2 text-dark mb-3 pl-0 ml-0">
+                            <div class="card-body mx-auto p-3">
+                                <button type="button" class="btn bg-white text-dark rounded-pill" onfocus="this.blur();">
+                                    Pay interest with Fiat
+                                </button>
+                                <!-- Sub-Row: Columns to print values -->
+                                <div class="row pt-4 text-center no-gutters">
+                                    <div class="col-sm-3">
+                                        <h5>4%</h5>
+                                        <p><small>APR%</small></p>
+                                    </div>
+                                    <div class="col-sm-5">
+                                        <h5>$10</h5>
+                                        <p><small>Per Month</small></p>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <h5>$300</h5>
+                                        <p><small>Total</small></p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
