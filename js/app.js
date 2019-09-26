@@ -74,8 +74,15 @@ function calculate_ca(e, i) {
   let value_raw_la = loanAmount.value.match(/\d+/g)
   let joined_value
   console.log(value_raw_la)
-  if(value_raw_la) {
+  if (value_raw_la) {
     joined_value = value_raw_la.join("")
+    // coloring border red to show something wrong with this input.
+    if (joined_value < 1500) {
+      $('#loan-amount').css('border-color', 'red');
+    }
+    if (joined_value >= 1500) {
+      $('#loan-amount').css('border-color', '');
+    }
     console.log(joined_value)
     loanAmount.value = formatter.format(joined_value)
     changeBasedOnLA = true
@@ -97,9 +104,9 @@ function validate_ca() {
   joined_value = value_raw_la.join("")
   if (joined_value < 1500) {
     loanAmount.value = '$1,500'
+    $('#loan-amount').css('border-color', '');
     setColleteralValue(1500)
   } else {
-    // Change collateral value accordingly as well at start
     // Start loading on pre input when start keep inout readable
     // Stop loading and make input writable 
     // use ltv to colleteral amount
@@ -132,12 +139,12 @@ function calculate_la() {
 function setColleteralValue(loan_amount) {
   let init_currency = $('.currency-btns > .btn.active').text().trim()
   let init_ltv = $('.collateral-ltv-btns > .btn.active').text().trim()
-  console.log(init_ltv.match(/\d+/g) / 100)
+  let ltv_to_use = init_ltv.match(/\d+/g) / 100
   document.getElementById("ca_logo").src = "assets/" + init_currency.toLowerCase() + ".png";
   let elements = listOfValuesOne;
   for (let index = 0; index < elements.length; index++) {
     if (elements[index].name === init_currency) {
-      collateralAmount.value = ((loan_amount / 0.25) / parseFloat(elements[index].usd)).toFixed(6)
+      collateralAmount.value = ((loan_amount / ltv_to_use) / parseFloat(elements[index].usd)).toFixed(6)
       old_right_val = collateralAmount.value.match(/^[0-9]*\.?[0-9]*$/) // init temp variable
       break;
     }
@@ -146,12 +153,13 @@ function setColleteralValue(loan_amount) {
 function setLoanValue(colleteral_amount) {
   let init_currency = $('.currency-btns > .btn.active').text().trim()
   let init_ltv = $('.collateral-ltv-btns > .btn.active').text().trim()
+  let ltv_to_use = init_ltv.match(/\d+/g) / 100
   console.log(init_ltv.match(/\d+/g) / 100)
   document.getElementById("ca_logo").src = "assets/" + init_currency.toLowerCase() + ".png";
   let elements = listOfValuesOne;
   for (let index = 0; index < elements.length; index++) {
     if (elements[index].name === init_currency) {
-      loanAmount.value = ((colleteral_amount * parseFloat(elements[index].usd)) * 0.25).toFixed(0)
+      loanAmount.value = ((colleteral_amount * parseFloat(elements[index].usd)) * ltv_to_use).toFixed(0)
       calculate_ca(this, 1)
       break;
     }
