@@ -52,9 +52,13 @@ div.h5 {
 }
 .subcard-1 {
     background: rgb(30, 179, 125);
+    overflow: hidden;
+    white-space: nowrap;
 }
 .subcard-2 {
     background: rgb(247, 247, 250);
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 /* .btn:active
