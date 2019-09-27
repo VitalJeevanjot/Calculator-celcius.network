@@ -16,7 +16,7 @@ function latestData() {
         data.forEach(crypto => {
           listOfValuesOne.push({ name: crypto.name, usd: crypto.usd, interest: crypto.interestRate })
         })
-        console.log(listOfValuesOne)
+        // console.log(listOfValuesOne)
         calculate_ca()
       } else {
         console.log('No data available!')
@@ -55,6 +55,7 @@ collateralAmount.addEventListener('keyup', calculate_la)
 //Jquery handlers
 $(".currency-btns label").click(function () {
   $(this).addClass('active').siblings().removeClass('active');
+  console.log(changeBasedOnLA)
   if (changeBasedOnLA) {
     calculate_ca()
   } else {
@@ -118,7 +119,6 @@ function calculate_ca(e, i) {
       $('#loan-amount').css('border-color', '');
     }
     loanAmount.value = formatter.format(joined_value)
-    changeBasedOnLA = true
     if (i) return; // So Settingup current LA from CA won't reset CA based on current LA
     setColleteralValue(joined_value)
     calculateCEL()
@@ -162,7 +162,6 @@ function calculate_la() {
     joined_value = old_right_val.join("")
   }
   collateralAmount.value = joined_value
-  changeBasedOnLA = false
   setLoanValue(joined_value)
   calculateCEL()
   calculateFiat()
@@ -181,6 +180,7 @@ function setColleteralValue(loan_amount) {
       break;
     }
   }
+  changeBasedOnLA = true
 }
 function setLoanValue(colleteral_amount) {
   let init_currency = $('.currency-btns > .btn.active').text().trim()
@@ -195,6 +195,7 @@ function setLoanValue(colleteral_amount) {
       break;
     }
   }
+  changeBasedOnLA = false
 }
 
 function calculateCEL() {
