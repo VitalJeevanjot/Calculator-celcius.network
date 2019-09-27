@@ -1,5 +1,6 @@
-let listOfValuesOne = [];
-let changeBasedOnLA = true;
+let listOfValuesOne = []
+let changeBasedOnLA = true
+let globalMode // d = desktop, m = mobile
 let formatter = new Intl.NumberFormat('en-US', {
   style: 'currency',
   currency: 'USD',
@@ -16,8 +17,7 @@ function latestData() {
         data.forEach(crypto => {
           listOfValuesOne.push({ name: crypto.name, usd: crypto.usd, interest: crypto.interestRate })
         })
-        // console.log(listOfValuesOne)
-        calculate_ca()
+        calculate_ca(this,0 , 1)
       } else {
         console.log('No data available!')
       }
@@ -53,32 +53,42 @@ loanAmount.addEventListener('keyup', calculate_ca)
 loanAmount.addEventListener('blur', validate_ca)
 collateralAmount.addEventListener('keyup', calculate_la)
 //Jquery handlers
+// <Mobile> layout events...
+$('#currency_select').on('change', function(e){
+  activeInaciveSiblings(this, 'm')
+});
+$('#ltv_select').on('change', function(e){
+  activeInaciveSiblings(this, 'm')
+});
+$('#lt_select').on('change', function(e){
+  activeInaciveSiblings(this, 'm')
+});
+// <Desktop> layout events...
 $(".currency-btns label").click(function () {
   $(this).addClass('active').siblings().removeClass('active');
-  console.log(changeBasedOnLA)
-  if (changeBasedOnLA) {
-    calculate_ca()
-  } else {
-    calculate_la()
-  }
+  activeInaciveSiblings(this, 'd')
 });
 
 $(".collateral-ltv-btns label").click(function () {
   $(this).addClass('active').siblings().removeClass('active');
-  calculateCEL()
-  calculateFiat()
-  if (changeBasedOnLA) {
-    calculate_ca()
-  } else {
-    calculate_la()
-  }
+  activeInaciveSiblings(this, 'd')
 });
 
 $(".lt-btns label").click(function () {
   $(this).addClass('active').siblings().removeClass('active');
-  calculateCEL()
-  calculateFiat()
+  activeInaciveSiblings(this, 'd')
 });
+
+function activeInaciveSiblings(ele, mode) {
+  globalMode = mode
+  calculateCEL(mode)
+  calculateFiat(mode)
+  if (changeBasedOnLA) {
+    calculate_ca(this, 0, mode)
+  } else {
+    calculate_la(this, 0, mode)
+  }
+}
 
 function format (labelValue) {
 
@@ -108,7 +118,7 @@ function getRawLAmount() {
   }
   return false
 }
-function calculate_ca(e, i) {
+function calculate_ca(e, i, mode) {
   if (getRawLAmount()) {
     let joined_value = getRawLAmount()
     // coloring border red to show something wrong with this input.
@@ -120,9 +130,9 @@ function calculate_ca(e, i) {
     }
     loanAmount.value = formatter.format(joined_value)
     if (i) return; // So Settingup current LA from CA won't reset CA based on current LA
-    setColleteralValue(joined_value)
-    calculateCEL()
-    calculateFiat()
+    setColleteralValue(joined_value, globalMode)
+    calculateCEL(globalMode)
+    calculateFiat(globalMode)
   }
 }
 function validate_ca() {
@@ -137,16 +147,10 @@ function validate_ca() {
     loanAmount.value = '$1,500'
     $('#loan-amount').css('border-color', '');
     setColleteralValue(1500)
-  } else {
-    // Start loading on pre input when start keep inout readable
-    // Stop loading and make input writable 
-    // use ltv to colleteral amount
-    // Get all coin rates at start (Show loading and toasts if not loaded)
-    // If user enter colleteral value and do blur on inp field then get latest coin value (To show fast output to user for next time with latest price)
   }
 }
 let old_right_val // Temp variable for calculate_la()
-function calculate_la() {
+function calculate_la(e, i, mode) {
   let value_raw_ca = collateralAmount.value.match(/^[0-9]*\.?[0-9]*$/)
   let joined_value
   if (value_raw_ca) {
@@ -162,14 +166,20 @@ function calculate_la() {
     joined_value = old_right_val.join("")
   }
   collateralAmount.value = joined_value
-  setLoanValue(joined_value)
-  calculateCEL()
-  calculateFiat()
+  setLoanValue(joined_value, globalMode)
+  calculateCEL(globalMode)
+  calculateFiat(globalMode)
 }
 
-function setColleteralValue(loan_amount) {
-  let init_currency = $('.currency-btns > .btn.active').text().trim()
-  let init_ltv = $('.collateral-ltv-btns > .btn.active').text().trim()
+function setColleteralValue(loan_amount, mode) {
+  let init_currency, init_ltv
+  if (mode === 'd') {
+    init_currency = $('.currency-btns > .btn.active').text().trim()
+    init_ltv = $('.collateral-ltv-btns > .btn.active').text().trim()
+  } else {
+    init_currency = $('#currency_select').find("option:selected").val()
+    init_ltv =  $('#ltv_select').find("option:selected").val()
+  }
   let ltv_to_use = init_ltv.match(/\d+/g) / 100
   document.getElementById("ca_logo").src = "assets/" + init_currency.toLowerCase() + ".png";
   let elements = listOfValuesOne;
@@ -182,9 +192,15 @@ function setColleteralValue(loan_amount) {
   }
   changeBasedOnLA = true
 }
-function setLoanValue(colleteral_amount) {
-  let init_currency = $('.currency-btns > .btn.active').text().trim()
-  let init_ltv = $('.collateral-ltv-btns > .btn.active').text().trim()
+function setLoanValue(colleteral_amount, mode) {
+  let init_currency, init_ltv
+  if (mode === 'd') {
+    init_currency = $('.currency-btns > .btn.active').text().trim()
+    init_ltv = $('.collateral-ltv-btns > .btn.active').text().trim()
+  } else {
+    init_currency = $('#currency_select').find("option:selected").val()
+    init_ltv =  $('#ltv_select').find("option:selected").val()
+  }
   let ltv_to_use = init_ltv.match(/\d+/g) / 100
   document.getElementById("ca_logo").src = "assets/" + init_currency.toLowerCase() + ".png";
   let elements = listOfValuesOne;
@@ -198,9 +214,15 @@ function setLoanValue(colleteral_amount) {
   changeBasedOnLA = false
 }
 
-function calculateCEL() {
-  let init_ltv = $('.collateral-ltv-btns > .btn.active').text().trim()
-  let init_lt = $('.lt-btns > .btn.active').attr("value");
+function calculateCEL(mode) {
+  let init_lt, init_ltv
+  if (mode === 'm') {
+    init_lt = $('#lt_select').find("option:selected").val()
+    init_ltv =  $('#ltv_select').find("option:selected").val()
+  } else {
+    init_lt = $('.lt-btns > .btn.active').attr("value");
+    init_ltv = $('.collateral-ltv-btns > .btn.active').text().trim()
+  }
   let apr_val = 3.46
   // conditions for ltv
   if (init_ltv === '25%') {
@@ -218,9 +240,15 @@ function calculateCEL() {
   totalCEL.innerText = '$' + format((init_lt * pm_CEL).toFixed(2))
 }
 
-function calculateFiat() {
-  let init_ltv = $('.collateral-ltv-btns > .btn.active').text().trim()
-  let init_lt = $('.lt-btns > .btn.active').attr("value");
+function calculateFiat(mode) {
+  let init_lt, init_ltv
+  if (mode === 'm') {
+    init_lt = $('#lt_select').find("option:selected").val()
+    init_ltv =  $('#ltv_select').find("option:selected").val()
+  } else {
+    init_lt = $('.lt-btns > .btn.active').attr("value");
+    init_ltv = $('.collateral-ltv-btns > .btn.active').text().trim()
+  }
   let apr_val = 4.95
   // conditions for ltv
   if (init_ltv === '25%') {

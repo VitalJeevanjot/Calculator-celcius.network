@@ -17,13 +17,13 @@
 
 <body>
     <div class="p-2 bd-highlight">
-        <div class="card container max-auto" style="max-width: 40rem;">
+        <div class="card container container-fluid max-auto" style="max-width: 45rem;">
             <div class="card-body">
                 <div class="row">
                     <div class="pt-4 pl-3 h5">Select your collateral type</div>
                 </div>
                 <!-- Button group of 6 currencies in Desktop view -->
-                <div class="btn-group btn-group-toggle row currency-btns" data-toggle="buttons">
+                <div class="btn-group btn-group-toggle row currency-btns d-none d-md-block" data-toggle="buttons">
                     <label class="btn btn-outline active m-2 rounded border-dark text-dark text-left" id="f_btn">
                         <img src="assets/btc.png" class="avatar" alt="btc-logo">
                         <input type="radio" name="options" id="btc-inp" checked onfocus="this.blur();">
@@ -51,6 +51,14 @@
                         <input type="radio" name="options" id="dash-inp" onfocus="this.blur();">DASH
                     </label>
                 </div>
+                <select class="custom-select d-block d-sm-block d-md-none" id="currency_select">
+                    <option value="BTC">BTC</option>
+                    <option value="ETH">ETH</option>
+                    <option value="BCH">BCH</option>
+                    <option value="XRP">XRP</option>
+                    <option value="LTC">LTC</option>
+                    <option value="DASH">DASH</option>
+                </select>
                 <!-- Row: Inputs of Loan Amount and Collateral Amount -->
                 <div class="row">
                     <div class="col-lg h5 pt-4">
@@ -75,7 +83,7 @@
                     <div class="pt-4 pb-1 pl-3 h5">LTV (Loan to Value)</div>
                 </div>
                 <!-- Row: Select Loan To Value -->
-                <div class="btn-group btn-group-toggle row collateral-ltv-btns" data-toggle="buttons">
+                <div class="btn-group btn-group-toggle row collateral-ltv-btns d-none d-md-block" data-toggle="buttons">
                     <label class="btn btn-outline active m-2 rounded border-dark text-dark">
                         <input type="radio" name="ltv-options" id="ltv-inp-0" checked onfocus="this.blur();">
                         <span class="mb-0 blockquote">25%</span>
@@ -89,11 +97,17 @@
                         <span class="mb-0 blockquote">50%</span>
                     </label>
                 </div>
+                <!-- Mobile Layout -->
+                <select class="custom-select d-block d-sm-block d-md-none" id="ltv_select">
+                        <option value="25%">25%</option>
+                        <option value="33%">33%</option>
+                        <option value="50%">50%</option>
+                </select>
                 <!-- Row: Select Long Term Plan -->
                 <div class="row">
                     <div class="pt-4 pb-1 pl-3 h5">Loan Term</div>
                 </div>
-                <div class="btn-group btn-group-toggle row lt-btns" data-toggle="buttons">
+                <div class="btn-group btn-group-toggle row lt-btns d-none d-md-block" data-toggle="buttons">
                     <label class="btn btn-outline active m-2 rounded border-dark text-dark" value="6">
                         <input type="radio" name="ltv-options" id="lt-inp-0" checked onfocus="this.blur();">
                         6 Months
@@ -111,15 +125,22 @@
                         3 Years
                     </label>
                 </div>
+                <!-- Mobile Layout -->
+                <select class="custom-select d-block d-sm-block d-md-none" id="lt_select">
+                        <option value="6">6 Months</option>
+                        <option value="12">1 Year</option>
+                        <option value="24">2 Years</option>
+                        <option value="36">3 Years</option>
+                </select>
                 <!-- Row: Interest Rates Title -->
                 <div class="row h5 pt-4 pl-3">
                     <p>Interest Rates</p>
                 </div>
                 <!-- Row: Interest Rates (Two cards in single row) -->
                 <div class="row no-gutters">
-                    <div class="col-lg p-1">
+                    <div class="col p-1">
                         <div class="card mx-auto text-white shadow-lg subcard-1 mb-3 pr-0 mr-0">
-                            <div class="card-body mx-auto p-3">
+                            <div class="card-body mx-auto p-2">
                                 <button type="button" class="btn bg-white text-dark rounded-pill"
                                     onfocus="this.blur();">
                                     Pay interest with CEL
@@ -131,7 +152,7 @@
                                         <h5 id="cel_apr">3.46%</h5>
                                         <p><small>APR%</small></p>
                                     </div>
-                                    <div class="col-xs pl-2 pr-2">
+                                    <div class="col-xs pl-3 pr-3">
                                         <h5 id="cel_pm">$4.33</h5>
                                         <p><small>Per Month</small></p>
                                     </div>
@@ -143,9 +164,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg p-1">
+
+                    <div class="col p-1">
                         <div class="card mx-auto text-white subcard-2 text-dark mb-3 pl-0 ml-0">
-                            <div class="card-body mx-auto p-3">
+                            <div class="card-body mx-auto p-2">
                                 <button type="button" class="btn bg-white text-dark rounded-pill"
                                     onfocus="this.blur();">
                                     Pay interest with Fiat
@@ -156,7 +178,7 @@
                                         <h5 id="fiat_apr">4.95%</h5>
                                         <p><small>APR%</small></p>
                                     </div>
-                                    <div class="col-xs pl-2 pr-2">
+                                    <div class="col-xs pl-3 pr-3">
                                         <h5 id="fiat_pm">$6.19</h5>
                                         <p><small>Per Month</small></p>
                                     </div>

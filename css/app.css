@@ -30,9 +30,6 @@
     border-width: 1px !important; 
     border-color: rgba(172, 172, 172, 0.521) !important;
 }
-.inside-container div {
-    max-width: 35rem;
-}
 div.h5 {
     color: rgb(50, 50, 93);
 }
@@ -41,14 +38,14 @@ div.h5 {
     outline: 0 none;
 }
 .currency-btns label {
-    width: 9rem;
+    width: 12.9rem;
 }
 .collateral-ltv-btns label {
-    width: 11.3rem;
-    height: 3rem;
+    width: 12.9rem;
+    height: 2.8rem;
 }
 .lt-btns label {
-    width: 8.3rem;
+    width: 9.35rem;
 }
 .subcard-1 {
     background: rgb(30, 179, 125);
@@ -61,6 +58,16 @@ div.h5 {
     white-space: nowrap;
 }
 
+@media screen and (max-width: 630px) {
+    .col-xs h5 {
+      font-size: 15px;
+    }
+}
+@media screen and (min-width: 631px) {
+    .col-xs h5 {
+      font-size: 20px;
+    }
+}
 /* .btn:active
 {
     font-size: 13px;
